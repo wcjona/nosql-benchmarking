@@ -23,7 +23,7 @@ def benchmark_redis_workload(r, workload, num_ops, data_size, key_list):
         weights = [0.2, 0.8]
     else:
         weights = [0.5, 0.5]
-    
+
     operations = ['write', 'read']
     write_count = 0
     read_count = 0
@@ -44,7 +44,7 @@ def benchmark_redis_workload(r, workload, num_ops, data_size, key_list):
                 r.get(random_key)
             read_count += 1
     elapsed = time.time() - start_time
-    print(f"Redis Workload '{workload}' with data size {data_size}: Executed {num_ops} operations ({write_count} writes, {read_count} reads) in {elapsed:.2f} seconds.")
+    print(f"Redis Workload '{workload}' with data size {data_size}: Executed {num_ops} operations ({write_count} writes, {read_count} reads) in {elapsed:.4f} seconds.")
 
 def main():
     parser = argparse.ArgumentParser(description="Redis Benchmarking Script with Workload and Data Size Options")
@@ -57,7 +57,7 @@ def main():
     args = parser.parse_args()
 
     r = redis.Redis(host='localhost', port=6379, db=0)
-    
+
     # Prepopulate keys for read operations.
     key_list = prepopulate_keys(r, count=100, data_size=args.data_size)
     benchmark_redis_workload(r, args.workload, args.num_ops, args.data_size, key_list)

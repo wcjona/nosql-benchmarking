@@ -59,7 +59,7 @@ def benchmark_cassandra_workload(session, workload, num_ops, data_size, id_list)
                 session.execute("SELECT * FROM test_table WHERE id = %s", (random_id,))
             read_count += 1
     elapsed = time.time() - start_time
-    print(f"Cassandra Workload '{workload}' with data size {data_size}: Executed {num_ops} operations ({write_count} writes, {read_count} reads) in {elapsed:.2f} seconds.")
+    print(f"Cassandra Workload '{workload}' with data size {data_size}: Executed {num_ops} operations ({write_count} writes, {read_count} reads) in {elapsed:.4f} seconds.")
 
 def main():
     parser = argparse.ArgumentParser(description="Cassandra Benchmarking Script with Workload and Data Size Options")
@@ -74,11 +74,11 @@ def main():
     cluster = Cluster(['127.0.0.1'])  # Adjust contact points as needed.
     session = cluster.connect()
     setup_keyspace_and_table(session)
-    
+
     # Prepopulate data and store the inserted ids.
     id_list = prepopulate_data(session, count=100, data_size=args.data_size)
     benchmark_cassandra_workload(session, args.workload, args.num_ops, args.data_size, id_list)
-    
+
     session.shutdown()
     cluster.shutdown()
 

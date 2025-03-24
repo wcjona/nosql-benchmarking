@@ -19,7 +19,7 @@ def benchmark_mongodb_workload(collection, workload, num_ops, data_size):
         weights = [0.2, 0.8]  # 20% writes, 80% reads.
     else:  # mixed
         weights = [0.5, 0.5]
-    
+
     operations = ['write', 'read']
     write_count = 0
     read_count = 0
@@ -36,7 +36,7 @@ def benchmark_mongodb_workload(collection, workload, num_ops, data_size):
             list(collection.aggregate([{"$sample": {"size": 1}}]))
             read_count += 1
     elapsed = time.time() - start_time
-    print(f"MongoDB Workload '{workload}' with data size {data_size}: Executed {num_ops} operations ({write_count} writes, {read_count} reads) in {elapsed:.2f} seconds.")
+    print(f"MongoDB Workload '{workload}' with data size {data_size}: Executed {num_ops} operations ({write_count} writes, {read_count} reads) in {elapsed:.4f} seconds.")
 
 def main():
     parser = argparse.ArgumentParser(description="MongoDB Benchmarking Script with Workload and Data Size Options")
