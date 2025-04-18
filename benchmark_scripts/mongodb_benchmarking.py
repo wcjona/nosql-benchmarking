@@ -48,7 +48,7 @@ def main():
                         help="Size of the random string data in each document")
     args = parser.parse_args()
 
-    client = MongoClient("mongodb://localhost:27017/")
+    client = MongoClient("mongodb://192.168.219.129:27017/")
     db = client["benchmark_db"]
     collection = db["test_collection"]
     # Clear previous test data.

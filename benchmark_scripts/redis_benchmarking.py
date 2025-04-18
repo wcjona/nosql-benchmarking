@@ -56,7 +56,7 @@ def main():
                         help="Size of the random string data for each key")
     args = parser.parse_args()
 
-    r = redis.Redis(host='localhost', port=6379, db=0)
+    r = redis.Redis(host='192.168.219.129', port=6379, db=0)
 
     # Prepopulate keys for read operations.
     key_list = prepopulate_keys(r, count=100, data_size=args.data_size)

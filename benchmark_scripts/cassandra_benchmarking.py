@@ -71,7 +71,7 @@ def main():
                         help="Size of the random string data in each record")
     args = parser.parse_args()
 
-    cluster = Cluster(['127.0.0.1'])  # Adjust contact points as needed.
+    cluster = Cluster(['192.168.219.129'])  # Adjust contact points as needed.
     session = cluster.connect()
     setup_keyspace_and_table(session)
 
