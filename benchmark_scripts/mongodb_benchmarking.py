@@ -13,10 +13,10 @@ def prepopulate_collection(collection, count, data_size):
     collection.insert_many(docs)
 
 def benchmark_mongodb_workload(collection, workload, num_ops, data_size):
-    if workload == "write-heavy":
-        weights = [0.8, 0.2]  # 80% writes, 20% reads.
-    elif workload == "read-heavy":
-        weights = [0.2, 0.8]  # 20% writes, 80% reads.
+    if workload == "write":
+        weights = [1, 0]
+    elif workload == "read":
+        weights = [0, 1]
     else:  # mixed
         weights = [0.5, 0.5]
 
@@ -40,7 +40,7 @@ def benchmark_mongodb_workload(collection, workload, num_ops, data_size):
 
 def main():
     parser = argparse.ArgumentParser(description="MongoDB Benchmarking Script with Workload and Data Size Options")
-    parser.add_argument("--workload", choices=["read-heavy", "write-heavy", "mixed"], default="mixed",
+    parser.add_argument("--workload", choices=["read", "write", "mixed"], default="mixed",
                         help="Type of workload to run")
     parser.add_argument("--num_ops", type=int, default=1000,
                         help="Number of operations to perform")

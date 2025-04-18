@@ -17,10 +17,10 @@ def prepopulate_keys(r, count, data_size):
     return keys
 
 def benchmark_redis_workload(r, workload, num_ops, data_size, key_list):
-    if workload == "write-heavy":
-        weights = [0.8, 0.2]
-    elif workload == "read-heavy":
-        weights = [0.2, 0.8]
+    if workload == "write":
+        weights = [1, 0]
+    elif workload == "read":
+        weights = [0, 1]
     else:
         weights = [0.5, 0.5]
 
@@ -48,7 +48,7 @@ def benchmark_redis_workload(r, workload, num_ops, data_size, key_list):
 
 def main():
     parser = argparse.ArgumentParser(description="Redis Benchmarking Script with Workload and Data Size Options")
-    parser.add_argument("--workload", choices=["read-heavy", "write-heavy", "mixed"], default="mixed",
+    parser.add_argument("--workload", choices=["read", "write", "mixed"], default="mixed",
                         help="Type of workload to run")
     parser.add_argument("--num_ops", type=int, default=1000,
                         help="Number of operations to perform")

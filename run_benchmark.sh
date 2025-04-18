@@ -11,9 +11,9 @@ SCRIPT_NAME=$(basename "$PYTHON_SCRIPT" .py)
 OUTPUT_CSV="results_${SCRIPT_NAME}.csv"
 
 # Parameter options
-workloads=("read-heavy" "write-heavy" "mixed")
-num_ops=("10" "100" "1000" "10000")
-data_sizes=("10" "100" "1000" "10000")
+workloads=("read" "write" "mixed")
+num_ops=("1000")
+data_sizes=("10" "100" "500" "1000" "5000" "10000" "50000" "100000")
 
 # Write CSV header
 echo "script,workload,num_ops,data_size,time_seconds" > "$OUTPUT_CSV"
