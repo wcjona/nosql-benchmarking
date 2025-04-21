@@ -13,7 +13,7 @@ OUTPUT_CSV="results_${SCRIPT_NAME}.csv"
 # Parameter options
 workloads=("read" "write" "mixed")
 num_ops=("1000")
-data_sizes=("10" "100" "500" "1000" "5000" "10000" "50000" "100000")
+data_sizes=("10" "100" "500" "1000" "5000" "15000" "50000" "100000")
 
 # Write CSV header
 echo "script,workload,num_ops,data_size,time_seconds" > "$OUTPUT_CSV"
@@ -30,6 +30,7 @@ for workload in "${workloads[@]}"; do
 
       # Write to CSV
       echo "$SCRIPT_NAME,$workload,$ops,$size,$time" >> "$OUTPUT_CSV"
+      sleep 3
     done
   done
 done
