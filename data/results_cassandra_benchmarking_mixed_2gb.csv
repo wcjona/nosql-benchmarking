@@ -1,0 +1,9 @@
+script,workload,num_ops,data_size,time_seconds
+cassandra_benchmarking,mixed,1000,10,0.8187
+cassandra_benchmarking,mixed,1000,100,0.8440
+cassandra_benchmarking,mixed,1000,500,0.8070
+cassandra_benchmarking,mixed,1000,1000,0.8000
+cassandra_benchmarking,mixed,1000,5000,1.0698
+cassandra_benchmarking,mixed,1000,15000,1.6093
+cassandra_benchmarking,mixed,1000,50000,3.6278
+cassandra_benchmarking,mixed,1000,100000,4.4993
