@@ -1,10 +1,7 @@
 1. Install Virtualbox: https://www.virtualbox.org/wiki/Downloads
 2. Install Ubuntu Server 24.04: https://ubuntu.com/download/server
 3. Setup new VM on Virtualbox
-4. For resources:
-- Single core system: 8192 mb memory, 1 core
-- Multi core system: 8192 mb memory, 4 core
-k
+
 Install python:
 `sudo apt-get update`
 `sudo apt-get install python3 python3-pip`
@@ -31,3 +28,9 @@ Verify Services running:
 
 `sudo systemctl start redis-server`
 `sudo systemctl status redis-server`
+
+To run Benchmarks:
+`./run_benchmark.sh <script name>`
+
+To run Database Scripts:
+`python3 <database_type>_benchmarking.py --workload <mixed read write> --ops <int> --data_size <int>
